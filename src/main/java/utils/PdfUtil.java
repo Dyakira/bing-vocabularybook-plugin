@@ -37,10 +37,10 @@ public class PdfUtil
         {
             Phrase phrase = phrases.getPhrases().get(paragraphs);
             //中文编码
-            BaseFont baseFont = BaseFont.createFont("STSongStd-Light",
-                    "UniGB-UCS2-H", false);
-            Font fontChinese = new Font(baseFont);
-            ct.addElement(new Paragraph(String.format("%s%s: %s", phrase.getEng(), phrase.getPhonetic(), phrase.getDefi()
+            Font bf = new Font(BaseFont.createFont( "STSong-Light", "UniGB-UCS2-H",  BaseFont.EMBEDDED));
+            Font fontChinese = new Font(bf);
+            ct.addElement(new com.itextpdf.text.Phrase(phrase.getEng()));
+            ct.addElement(new Paragraph(String.format("%s",phrase.getDefi()
             ), fontChinese));
             paragraphs++;
             while (ColumnText.hasMoreText(ct.go()))
